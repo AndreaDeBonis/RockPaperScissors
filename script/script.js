@@ -1,11 +1,38 @@
 const symbols = ['Rock','Paper','Scissors']
+let playerScore = 0
+let computerScore = 0
 
 document.addEventListener('click', (e) => {
+    resetTie()
     if (symbols.includes(e.target.id)) {
-        console.log(play(e.target.id,getComputerChoice()))
+        updateScore(play(e.target.id,getComputerChoice()))
     }
+    else if (e.target.id == "Reset") {
+        resetResults()
+        return
+    }
+    updateResults()
 })
 
+function resetTie () {
+    document.getElementById("Tie").innerHTML= ""
+}
+
+function resetResults () {
+    playerScore = 0
+    computerScore = 0
+    document.getElementById("Results").innerHTML = ""
+}
+
+function updateResults() {
+    document.getElementById("Results").innerHTML= `Player ${playerScore} - Computer ${computerScore}`
+}
+
+function updateScore(score) {
+    if (score > 0) playerScore++
+    else if (score < 0) computerScore++
+    else document.getElementById("Tie").innerHTML= "Tie!"
+}
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) 
@@ -41,6 +68,7 @@ function play(playerChoice, computerChoiche) {
     }
 }
 
+//Can be used in console
 function game (matches) {
     let playerScore = 0
     let computerScore = 0
