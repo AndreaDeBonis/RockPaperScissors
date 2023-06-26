@@ -5,10 +5,18 @@ let playerHand
 let computerHand
 
 document.addEventListener('click', (e) => {
-    if (symbols.includes(e.target.id)) {
+    if (symbols.includes(e.target.id) && (playerScore == 5 || computerScore == 5)) {
+        resetGame()
+        resetResults()
+    }
+    else if (symbols.includes(e.target.id)) {
         resetGame()
         updateScore(play(e.target.id,getComputerChoice()))
         updateResults()
+        if (playerScore == 5 || computerScore == 5) {
+            updateGame(`${playerScore > computerScore ? "Player" : "Computer"} wins!`)
+            hideButtons()
+        }
     }
     else if (e.target.id == "Reset") {
         resetGame()
@@ -17,7 +25,15 @@ document.addEventListener('click', (e) => {
     
 })
 
+
+function hideButtons () {
+     const buttons = document.querySelectorAll('.symbol')
+     buttons.forEach(button => button.style.display="none")
+}
+
 function resetGame () {
+    const buttons = document.querySelectorAll('.symbol')
+    buttons.forEach(button => button.style.display="inherit")
     document.getElementById("Game").innerHTML= "Press a button!"
 }
 
