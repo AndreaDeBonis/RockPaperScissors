@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 80px;
 }
 
 div {
@@ -20,22 +20,35 @@ div {
 }
 
 button {
-    font-size: xx-large;
+    font-size: 80px;
     background-color: rgb(255, 255, 255);
     border: 1px solid transparent;
-    padding: 8px;
+    padding: 20px;
     border-radius: 100%;
     cursor: pointer;
+    transition-duration: 0.1s;
 }
 
 button:hover {
-    font-size: xx-large;
+    transform: scale(1.1);
     background-color: rgb(160, 182, 207);
     border: 1px solid transparent;
     border-radius: 100%;
 }
 
+button:active {
+    background-color: rgb(33, 19, 235);
+}
+
 p {
     display: block;
     size: 200px 19px;
+}
+
+#Reset {
+    font-size: 60px;
+}
+
+#Game, #Results {
+    font-size: 50px;
 }
